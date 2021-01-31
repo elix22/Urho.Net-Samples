@@ -4,6 +4,7 @@ Samples for the Urho.Net cross platofrm C# game development framework
 
 https://github.com/elix22/Urho.Net
 
+Make sure you are using the latest Urho.Net framework package.
 
 Each folder is a fully self contained Visual Studio code project , containing all the scripts and tools to allow pleasent and fluent development.
   The downside of it is that this is a hugh repo.
