@@ -265,7 +265,7 @@ public class CharacterDemo : Sample
 			shape.SetBox(Vector3.One, Vector3.Zero, Quaternion.Identity);
 
 			// Create mushrooms of varying sizes
-			const uint numMushrooms = 60;
+			 uint numMushrooms = 60;
 			for (uint i = 0; i < numMushrooms; ++i)
 			{
 				Node objectNode = scene.CreateChild("Mushroom");

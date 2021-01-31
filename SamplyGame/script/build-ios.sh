@@ -20,6 +20,68 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 #
-cd IOS
-./script/build_cli_ios.sh "$@"
-cd ..
+if [[ "$OSTYPE" == "darwin"* ]]; then
+
+    verify_dir_exist_or_exit()
+    {
+        if [ ! -d $1 ] ; then
+            echo "$1 not found , are you sure that URHONET_HOME_ROOT=${URHONET_HOME_ROOT} is pointing to the right place ? "
+            exit 1
+        fi
+    }
+
+    if [ ! -f ~/.urhonet_config/urhonethome ]; then
+        echo  "1 Urho.Net is not configured , please  run configure.sh (configure.bat on Windows) from the Urho.Net installation folder  "
+        exit -1
+    fi
+
+    URHONET_HOME_ROOT=$(cat ~/.urhonet_config/urhonethome)
+
+    if [ ! -d "$URHONET_HOME_ROOT" ]; then
+        echo  "Urho.Net is not configured , please  run configure.sh (configure.bat on Windows) from the Urho.Net installation folder  "
+        exit -1
+    else
+        echo "URHONET_HOME_ROOT=${URHONET_HOME_ROOT}"
+
+        if [ ! -d libs/dotnet/bcl/ios ] ; then
+            verify_dir_exist_or_exit "${URHONET_HOME_ROOT}/template/libs/dotnet/bcl/ios" 
+            mkdir -p libs/dotnet/bcl/ios
+            cp "-r"  ${URHONET_HOME_ROOT}/template/libs/dotnet/bcl/ios/*  libs/dotnet/bcl/ios/
+        fi
+
+        if [ ! -d libs/dotnet/urho//mobile/ios ] ; then
+            verify_dir_exist_or_exit "${URHONET_HOME_ROOT}/template/libs/dotnet/urho//mobile/ios"
+            mkdir -p libs/dotnet/urho//mobile/ios
+            cp "-r"  ${URHONET_HOME_ROOT}/template/libs/dotnet/urho//mobile/ios/*  libs/dotnet/urho//mobile/ios/
+        fi
+
+        if [ ! -d IOS ] ; then 
+            verify_dir_exist_or_exit "${URHONET_HOME_ROOT}/template/IOS" 
+            echo "copying IOS folder"
+
+            . script/project_vars.sh
+            cp -R ${URHONET_HOME_ROOT}/template/IOS .
+
+            sed -i ""  "s*TEMPLATE_PROJECT_NAME*$PROJECT_NAME*g" "IOS/CMakeLists.txt"
+            sed -i ""  "s*TEMPLATE_PROJECT_NAME*$PROJECT_NAME*g" "IOS/script/build_cli_ios.sh"
+            sed -i ""  "s*TEMPLATE_UUID*$PROJECT_UUID*g" "IOS/script/build_cli_ios.sh"
+
+            currPwd=`pwd`
+            cd IOS
+            mkdir bin
+            cd bin
+            ln -s  ../../Assets/* .
+            cd $currPwd
+        fi 
+
+        if [ ! -d libs/ios ] ; then 
+            cp -R ${URHONET_HOME_ROOT}/template/libs/ios libs
+        fi 
+    fi
+    cd IOS
+    ./script/build_cli_ios.sh "$@"
+    cd ..
+else
+	echo  "not an Apple platform , can't run"
+	exit -1
+fi

@@ -1,2 +1,0 @@
-include ':app', ':classes'
-rootProject.name='RenderToTexture'
