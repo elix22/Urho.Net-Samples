@@ -44,9 +44,16 @@ namespace HotReload
 
             public void FreeResources()
             {
-                context?.Unload();
-                context = null;
-                assembly = null;
+                try
+                {
+                    context?.Unload();
+                    context = null;
+                    assembly = null;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
             }
 
             public DynamicComponentEntry()
@@ -304,7 +311,7 @@ namespace HotReload
         {
             string resourceName = args.ResourceName;
             Component instance = CreateComponent(resourceName, true);
-           
+
             // compilation succeeded  so replace the components on the nodes
             if (instance != null)
             {

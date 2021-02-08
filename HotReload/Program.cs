@@ -1,4 +1,5 @@
 ﻿using Urho;
+using System;
 
 namespace HotReload
 {
@@ -6,7 +7,14 @@ namespace HotReload
     {
         static void Main(string[] args)
         {
-            new HotReload().Run();
+            try
+            {
+                new HotReload().Run();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
         }
     }
 }
