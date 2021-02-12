@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using Urho;
 using Urho.Resources;
 using System.Runtime.Loader;
+using System.Runtime.InteropServices;
 
 namespace HotReload
 {
@@ -46,7 +47,11 @@ namespace HotReload
             {
                 try
                 {
-                    context?.Unload();
+                    bool isWindows = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
+                    if(isWindows == false)
+                    {
+                      context?.Unload();
+                    }
                     context = null;
                     assembly = null;
                 }
