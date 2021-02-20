@@ -1,0 +1,20 @@
+[Sat Feb 20 17:21:32 2021] INFO: Opened log file Urho3D.log
+[Sat Feb 20 17:21:32 2021] INFO: Created 7 worker threads
+[Sat Feb 20 17:21:32 2021] INFO: Added resource path /Users/elialoni/Development/Urho.Net-Samples/Chat/bin/Debug/netcoreapp3.1/CoreData/
+[Sat Feb 20 17:21:32 2021] INFO: Added resource path /Users/elialoni/Development/Urho.Net-Samples/Chat/bin/Debug/netcoreapp3.1/Data/
+[Sat Feb 20 17:21:32 2021] INFO: Adapter used ATI Technologies Inc. AMD Radeon Pro 5500M OpenGL Engine
+[Sat Feb 20 17:21:32 2021] INFO: Set screen mode 2048x1536 rate 60 Hz windowed monitor 0 highDPI
+[Sat Feb 20 17:21:32 2021] INFO: Initialized input
+[Sat Feb 20 17:21:32 2021] INFO: Initialized user interface
+[Sat Feb 20 17:21:32 2021] INFO: Initialized renderer
+[Sat Feb 20 17:21:32 2021] INFO: Set audio mode 44100 Hz stereo interpolated
+[Sat Feb 20 17:21:32 2021] INFO: Initialized engine
+[Sat Feb 20 17:21:33 2021] INFO: Initializing client connectio[Sat Feb 20 17:21:34 2021] INFO: Client 127.0.0.1:56809 connected
+[Sat Feb 20 17:21:50 2021] INFO: Client 192.168.1.116:65366 connected
+[Sat Feb 20 17:22:[Sat Feb 20 17:27:09 2021] INFO: Disconnected from server
+eb 20 17:24:45 2021] INFO: Client 192.168.1.116:65366 disconnected
+[Sat Feb 20 17:26:17 2021] INFO: Client 192.168.1.116:64079 connected
+[Sat Feb 20 17:26:48 2021] INFO: Client 192.168.1.116:64079 disconnected
+[Sat Feb 20 17:27:00 2021] INFO: Client 192.168.1.107:42559 disconnected
+[Sat Feb 20 17:27:09 2021] INFO: Client 127.0.0.1:56809 disconnected
+[Sat Feb 20 17:27:13 2021] INFO: Stopped server
