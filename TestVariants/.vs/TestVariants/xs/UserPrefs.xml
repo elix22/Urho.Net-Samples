@@ -1,0 +1,30 @@
+﻿<Properties StartupConfiguration="{E38C1785-3925-4A16-BC00-AA0C51BCC048}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="TestVariants.csproj">
+    <Files>
+      <File FileName="Source/Sample.cs" Line="1" Column="1" />
+      <File FileName="TestVariants.csproj" Line="120" Column="27" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="TestVariants" expanded="True" selected="True">
+            <Node name="TestVariants" expanded="True">
+              <Node name="Dependencies" expanded="True">
+                <Node name="FrameworkReferences" expanded="True" />
+              </Node>
+              <Node name="References" expanded="True" />
+              <Node name="Source" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.TestVariants PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
