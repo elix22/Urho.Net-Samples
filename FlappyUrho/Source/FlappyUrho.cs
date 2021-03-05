@@ -151,7 +151,14 @@ namespace FlappyUrho
             helpText.AddTag("Intro");
             helpText.AddTag("Dead");
 
-            helpText.Value = "Left click to swim";
+            if(IsDesktop())
+            {
+                 helpText.Value = "Left click to swim";
+            }
+            else
+            {
+                helpText.Value = "Touch screen to swim";
+            }
 
             Node scoreNode = scene.CreateChild("Score");
             Node highscoreNode = scene.CreateChild("Highscore");
