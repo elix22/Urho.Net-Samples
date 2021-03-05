@@ -4,6 +4,8 @@ using Urho.Resources;
 using Urho.Physics;
 using Urho.Gui;
 using System;
+using System.Collections.Generic;
+using Urho.IO;
 
 namespace FlappyUrho
 {
@@ -14,6 +16,10 @@ namespace FlappyUrho
         [Preserve]
         public FlappyUrho() : base(new ApplicationOptions(assetsFolder: "Data/FlappyUrho;Data;CoreData")) { }
 
+		bool IsDesktop()
+		{
+			return Platform == Platforms.MacOSX || Platform == Platforms.Windows || Platform == Platforms.Linux;
+		}
         protected override void Start()
         {
             base.Start();
@@ -33,7 +39,7 @@ namespace FlappyUrho
 
             Audio.SetMasterGain(SoundType.Music.ToString(), 0.33f);
 
-
+            LoadHighScore();
         }
 
         void CreateScene()
@@ -131,6 +137,22 @@ namespace FlappyUrho
 
         void CreateUI()
         {
+
+            var ui = UI;
+            var cache = ResourceCache;
+
+            Font font = cache.GetFont("Fonts/Ubuntu-BI.ttf");
+
+            Text helpText = ui.Root.CreateText("help text");
+            helpText.SetFont(font, 20);
+            helpText.TextEffect = (TextEffect.Shadow);
+            helpText.SetAlignment(HorizontalAlignment.Center, VerticalAlignment.Center);
+            helpText.SetPosition(0, ui.Root.Height / 4);
+            helpText.AddTag("Intro");
+            helpText.AddTag("Dead");
+
+            helpText.Value = "Left click to swim";
+
             Node scoreNode = scene.CreateChild("Score");
             Node highscoreNode = scene.CreateChild("Highscore");
             Global.SetScores3D(scoreNode.CreateComponent<Score3D>(),
@@ -165,7 +187,10 @@ namespace FlappyUrho
                 crown.Reset();
 
                 if (Global.Score > Global.Highscore)
+                {
                     Global.Highscore = Global.Score;
+                    SaveHighScore();
+                }
                 Global.Score = 0;
                 Global.sinceLastReset = 0.0f;
 
@@ -200,6 +225,19 @@ namespace FlappyUrho
         void UpdateUIVisibility()
         {
 
+            var ui_root = UI.Root;
+
+            string tag;
+            if (Global.gameState == GameState.GS_PLAY) tag = "Gameplay";
+            else if (Global.gameState == GameState.GS_DEAD) tag = "Dead";
+            else tag = "Intro";
+
+            IReadOnlyList<UIElement> uiElements = ui_root.Children;
+
+            foreach (UIElement e in uiElements)
+            {
+                e.Visible = e.HasTag(tag);
+            }
 
         }
         protected override void OnUpdate(float timeStep)
@@ -233,7 +271,56 @@ namespace FlappyUrho
                 Exit();
             }
 
-			Global.OnUpdate();
+            if (IsDesktop() && input.GetKeyPress(Key.N9))
+            {
+                Image screenshot = new Image();
+                Graphics.TakeScreenShot(screenshot);
+                screenshot.SavePNG(FileSystem.ProgramDir + $"Assets/Data/Screenshot_{GetType().Name}_{DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss")}.png");
+            }
+
+            Global.OnUpdate();
+
+        }
+
+        void SaveHighScore()
+        {
+            FileSystem.CreateDir(FileSystem.UserDocumentsDir + "/FlappyUrho");
+
+            string filePath = FileSystem.UserDocumentsDir + "/FlappyUrho/configs.xml";
+            using (var file = new File(Context, filePath, FileMode.Write))
+            {
+                var xmlConfig = new XmlFile();
+                var configElem = xmlConfig.CreateRoot("root");
+                XmlElement highscoreElem = configElem.CreateChild("HighScore");
+                highscoreElem.SetUInt("value", Global.Highscore);
+                xmlConfig.Save(file);
+
+            }
+        }
+
+        void LoadHighScore()
+        {
+
+            string filePath = FileSystem.UserDocumentsDir + "/FlappyUrho/configs.xml";
+            if (!FileSystem.FileExists(filePath)) return;
+
+
+            using (var file = new File(Context, filePath, FileMode.Read))
+            {
+                var xmlConfig = new XmlFile();
+                xmlConfig.Load(file);
+
+                XmlElement configElem = xmlConfig.GetRoot();
+
+                if (configElem.Null == true) return;
+
+                XmlElement highscoreElem = configElem.GetChild("HighScore");
+
+                if (highscoreElem.Null == false && highscoreElem.HasAttribute("value"))
+                {
+                    Global.Highscore = highscoreElem.GetUInt("value");
+                }
+            }
 
         }
     }
