@@ -163,9 +163,9 @@ namespace OffroadVehicle
             vehicle.Init();
 
             vehicleRot_ = vehicleNode.Rotation;
-            Quaternion dir = new Quaternion(Vector3.Up, vehicleRot_.YawAngle);
-            dir = dir * new Quaternion(Vector3.Up, vehicle.Controls.Yaw);
-            dir = dir * new Quaternion(Vector3.Right, vehicle.Controls.Pitch);
+            Quaternion dir = new Quaternion(vehicleRot_.YawAngle,Vector3.Up);
+            dir = dir * new Quaternion(vehicle.Controls.Yaw,Vector3.Up);
+            dir = dir * new Quaternion(vehicle.Controls.Pitch,Vector3.Right);
             targetCameraPos_ = vehicleNode.Position - dir * new Vector3(0.0f, 0.0f, CameraDistance);
         }
 

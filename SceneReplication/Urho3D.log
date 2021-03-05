@@ -1,14 +1,13 @@
-[Sat Feb 27 22:46:45 2021] INFO: Opened log file Urho3D.log
-[Sat Feb 27 22:46:45 2021] INFO: Created 7 worker threads
-[Sat Feb 27 22:46:45 2021] INFO: Added resource path /Users/elialoni/Development/Urho.Net-Samples/SceneReplication/bin/Debug/netcoreapp3.1/CoreData/
-[Sat Feb 27 22:46:45 2021] INFO: Added resource path /Users/elialoni/Development/Urho.Net-Samples/SceneReplication/bin/Debug/netcoreapp3.1/Data/
-[Sat Feb 27 22:46:47 2021] INFO: Adapter used ATI Technologies Inc. AMD Radeon Pro 5500M OpenGL Engine
-[Sat Feb 27 22:46:47 2021] INFO: Set screen mode 2048x1536 rate 60 Hz windowed monitor 0 highDPI
-[Sat Feb 27 22:46:47 2021] INFO: Initialized input
-[Sat Feb 27 22:46:47 2021] INFO: Initialized user interface
-[Sat Feb 27 22:46:47 2021] INFO: Initialized renderer
-[Sat Feb 27 22:46:47 2021] INFO: Set audio mode 44100 Hz stereo interpolated
-[Sat Feb 27 22:46:47 2021] INFO: Initialized engine
-[Sat Feb 27 22:46:50 2021] INFO: Started server on port 2345
-[Sat Feb 27 22:47:22 2021] INFO: Client 192.168.1.107:48214 connected
-[Sat Feb 27 22:47:45 2021] INFO: Client 192.168.1.107:48214 disconnected
+[Fri Mar  5 16:01:28 2021] INFO: Opened log file Urho3D.log
+[Fri Mar  5 16:01:28 2021] INFO: Created 7 worker threads
+[Fri Mar  5 16:01:28 2021] INFO: Added resource path /Users/elialoni/Development/Urho.Net-Samples/SceneReplication/bin/Debug/netcoreapp3.1/CoreData/
+[Fri Mar  5 16:01:28 2021] INFO: Added resource path /Users/elialoni/Development/Urho.Net-Samples/SceneReplication/bin/Debug/netcoreapp3.1/Data/
+[Fri Mar  5 16:01:28 2021] INFO: Adapter used ATI Technologies Inc. AMD Radeon Pro 5500M OpenGL Engine
+[Fri Mar  5 16:01:28 2021] INFO: Set screen mode 2048x1536 rate 60 Hz windowed monitor 0 highDPI
+[Fri Mar  5 16:01:28 2021] INFO: Initialized input
+[Fri Mar  5 16:01:28 2021] INFO: Initialized user interface
+[Fri Mar  5 16:01:28 2021] INFO: Initialized renderer
+[Fri Mar  5 16:01:29 2021] INFO: Set audio mode 44100 Hz stereo interpolated
+[Fri Mar  5 16:01:29 2021] INFO: Initialized engine
+[Fri Mar  5 16:01:30 2021] INFO: Initializing client connection...
+[Fri Mar  5 16:01:30 2021] INFO: Connecting to server localho[Fri Mar  5 16:01:30 2021] INFO: C[Fri Mar  5 16:01:30 2021] INFO: [Fri Mar  5 16:02:15 2021] INFO: Stopped server
