@@ -40,7 +40,7 @@ namespace KinematicCharacterDemo
 		{
 			this.touchSensitivity = touchSensitivity;
 			this.input = input;
-			CameraDistance = KinematicCharacterDemo.CameraInitialDist;
+			CameraDistance = Global.CameraInitialDist;
 			zoom = false;
 			UseGyroscope = false;
 		}
@@ -71,7 +71,7 @@ namespace KinematicCharacterDemo
 					else
 						sens = 1;
 					CameraDistance += Math.Abs(touch1.Delta.Y - touch2.Delta.Y) * sens * touchSensitivity / 50.0f;
-					CameraDistance = MathHelper.Clamp(CameraDistance, KinematicCharacterDemo.CameraMinDist, KinematicCharacterDemo.CameraMaxDist); // Restrict zoom range to [1;20]
+					CameraDistance = MathHelper.Clamp(CameraDistance, Global.CameraMinDist, Global.CameraMaxDist); // Restrict zoom range to [1;20]
 				}
 			}
 
@@ -81,14 +81,14 @@ namespace KinematicCharacterDemo
 				JoystickState joystick;
 				if (input.TryGetJoystickState(0, out joystick) && joystick.Axes.Size >= 2)
 				{
-					if (joystick.GetAxisPosition(0) < -KinematicCharacterDemo.GyroscopeThreshold)
-						controls.Set(KinematicCharacterDemo.CtrlLeft, true);
-					if (joystick.GetAxisPosition(0) > KinematicCharacterDemo.GyroscopeThreshold)
-						controls.Set(KinematicCharacterDemo.CtrlRight, true);
-					if (joystick.GetAxisPosition(1) < -KinematicCharacterDemo.GyroscopeThreshold)
-						controls.Set(KinematicCharacterDemo.CtrlForward, true);
-					if (joystick.GetAxisPosition(1) > KinematicCharacterDemo.GyroscopeThreshold)
-						controls.Set(KinematicCharacterDemo.CtrlBack, true);
+					if (joystick.GetAxisPosition(0) < -Global.GyroscopeThreshold)
+						controls.Set(Global.CtrlLeft, true);
+					if (joystick.GetAxisPosition(0) > Global.GyroscopeThreshold)
+						controls.Set(Global.CtrlRight, true);
+					if (joystick.GetAxisPosition(1) < -Global.GyroscopeThreshold)
+						controls.Set(Global.CtrlForward, true);
+					if (joystick.GetAxisPosition(1) > Global.GyroscopeThreshold)
+						controls.Set(Global.CtrlBack, true);
 				}
 			}
 		}

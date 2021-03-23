@@ -29,25 +29,6 @@ namespace KinematicCharacterDemo
 	{
 		Scene scene;
 
-		public const float CameraMinDist = 1.0f;
-		public const float CameraInitialDist = 5.0f;
-		public const float CameraMaxDist = 20.0f;
-
-		public const float GyroscopeThreshold = 0.1f;
-
-		public const int CtrlForward = 1;
-		public const int CtrlBack = 2;
-		public const int CtrlLeft = 4;
-		public const int CtrlRight = 8;
-		public const int CtrlJump = 16;
-
-		public const float MoveForce = 0.8f;
-		public const float InairMoveForce = 0.02f;
-		public const float BrakeForce = 0.2f;
-		public const float JumpForce = 7.0f;
-		public const float YawSensitivity = 0.1f;
-		public const float InairThresholdTime = 0.1f;
-
 		/// Touch utility object.
 		Touch touch;
 		/// The controllable character component.
@@ -111,13 +92,13 @@ namespace KinematicCharacterDemo
 
 				// Collide camera ray with static physics objects (layer bitmask 2) to ensure we see the character properly
 				Vector3 rayDir = dir * new Vector3(0f, 0f, -1f);
-				float rayDistance = touch != null ? touch.CameraDistance : CameraInitialDist;
+				float rayDistance = touch != null ? touch.CameraDistance : Global.CameraInitialDist;
 
 				PhysicsRaycastResult result = new PhysicsRaycastResult();
 				scene.GetComponent<PhysicsWorld>().RaycastSingle(ref result, new Ray(aimPoint, rayDir), rayDistance, 2);
 				if (result.Body != null)
 					rayDistance = Math.Min(rayDistance, result.Distance);
-				rayDistance = MathHelper.Clamp(rayDistance, CameraMinDist, CameraMaxDist);
+				rayDistance = MathHelper.Clamp(rayDistance, Global.CameraMinDist, Global.CameraMaxDist);
 
 				CameraNode.Position = aimPoint + rayDir * rayDistance;
 				CameraNode.Rotation = dir;
@@ -131,7 +112,7 @@ namespace KinematicCharacterDemo
 			if (character != null)
 			{
 				// Clear previous controls
-				character.Controls.Set(CtrlForward | CtrlBack | CtrlLeft | CtrlRight | CtrlJump, false);
+				character.Controls.Set(Global.CtrlForward | Global.CtrlBack | Global.CtrlLeft | Global.CtrlRight | Global.CtrlJump, false);
 
 				// Update controls using touch utility class
 				touch?.UpdateTouches(character.Controls);
@@ -141,12 +122,12 @@ namespace KinematicCharacterDemo
 				{
 					if (touch == null || !touch.UseGyroscope)
 					{
-						character.Controls.Set(CtrlForward, input.GetKeyDown(Key.W));
-						character.Controls.Set(CtrlBack, input.GetKeyDown(Key.S));
-						character.Controls.Set(CtrlLeft, input.GetKeyDown(Key.A));
-						character.Controls.Set(CtrlRight, input.GetKeyDown(Key.D));
+						character.Controls.Set(Global.CtrlForward, input.GetKeyDown(Key.W));
+						character.Controls.Set(Global.CtrlBack, input.GetKeyDown(Key.S));
+						character.Controls.Set(Global.CtrlLeft, input.GetKeyDown(Key.A));
+						character.Controls.Set(Global.CtrlRight, input.GetKeyDown(Key.D));
 					}
-					character.Controls.Set(CtrlJump, input.GetKeyDown(Key.Space));
+					character.Controls.Set(Global.CtrlJump, input.GetKeyDown(Key.Space));
 
 					// Add character yaw & pitch from the mouse motion or touch input
 					if (TouchEnabled)
@@ -168,8 +149,8 @@ namespace KinematicCharacterDemo
 					}
 					else
 					{
-						character.Controls.Yaw += (float)input.MouseMove.X * YawSensitivity;
-						character.Controls.Pitch += (float)input.MouseMove.Y * YawSensitivity;
+						character.Controls.Yaw += (float)input.MouseMove.X * Global.YawSensitivity;
+						character.Controls.Pitch += (float)input.MouseMove.Y * Global.YawSensitivity;
 					}
 					// Limit pitch
 					character.Controls.Pitch = MathHelper.Clamp(character.Controls.Pitch, -80.0f, 80.0f);

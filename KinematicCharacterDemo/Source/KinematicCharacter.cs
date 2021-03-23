@@ -47,7 +47,7 @@ namespace KinematicCharacterDemo
         const float MOVE_FORCE = 0.2f;
         const float INAIR_MOVE_FORCE = 0.2f;
 
-		PhysicsWorld physicsWorld = null;
+        PhysicsWorld physicsWorld = null;
 
         public KinematicCharacter()
         {
@@ -61,27 +61,18 @@ namespace KinematicCharacterDemo
         {
             base.OnSceneSet(scene);
 
-			if(scene != null)
-			{
-				physicsWorld = Scene.GetComponent<PhysicsWorld>();
-				physicsWorld.PhysicsPreStep += (args) => FixedUpdate(args.TimeStep);
-				physicsWorld.PhysicsPostStep += (args) => FixedPostUpdate(args.TimeStep);
-			}
+            if (scene != null)
+            {
+                physicsWorld = Scene.GetComponent<PhysicsWorld>();
+                physicsWorld.PhysicsPreStep += (args) => FixedUpdate(args.TimeStep);
+            }
         }
-
-        public override void OnAttachedToNode(Node node)
-        {
-
-            // Component has been inserted into its scene node. Subscribe to events now
-            node.NodeCollision += (HandleNodeCollision);
-        }
-
         void FixedUpdate(float timeStep)
         {
             animCtrl = animCtrl ?? Node.GetComponent<AnimationController>(true);
-			kinematicController = kinematicController ?? Node.GetComponent<KinematicCharacterController>(true);
+            kinematicController = kinematicController ?? Node.GetComponent<KinematicCharacterController>(true);
 
- 			onGround = kinematicController.OnGround();
+            onGround = kinematicController.OnGround();
 
             // Update the in air timer. Reset if grounded
             if (!onGround)
@@ -89,22 +80,22 @@ namespace KinematicCharacterDemo
             else
                 inAirTimer = 0.0f;
             // When character has been in air less than 1/10 second, it's still interpreted as being on ground
-            bool softGrounded = inAirTimer < KinematicCharacterDemo.InairThresholdTime;
+            bool softGrounded = inAirTimer < Global.InairThresholdTime;
 
             // Update movement & animation
             var rot = Node.Rotation;
             Vector3 moveDir = Vector3.Zero;
 
-           
 
 
-            if (Controls.IsDown(KinematicCharacterDemo.CtrlForward))
+
+            if (Controls.IsDown(Global.CtrlForward))
                 moveDir += Vector3.Forward;
-            if (Controls.IsDown(KinematicCharacterDemo.CtrlBack))
+            if (Controls.IsDown(Global.CtrlBack))
                 moveDir += Vector3.Back;
-            if (Controls.IsDown(KinematicCharacterDemo.CtrlLeft))
+            if (Controls.IsDown(Global.CtrlLeft))
                 moveDir += Vector3.Left;
-            if (Controls.IsDown(KinematicCharacterDemo.CtrlRight))
+            if (Controls.IsDown(Global.CtrlRight))
                 moveDir += Vector3.Right;
 
             // Normalize move vector so that diagonal strafing is not faster
@@ -127,7 +118,7 @@ namespace KinematicCharacterDemo
             if (softGrounded)
             {
                 // Jump. Must release jump control between jumps
-                if (Controls.IsDown(KinematicCharacterDemo.CtrlJump))
+                if (Controls.IsDown(Global.CtrlJump))
                 {
                     if (okToJump)
                     {
@@ -138,7 +129,7 @@ namespace KinematicCharacterDemo
                         animCtrl.StopLayer(0);
                         animCtrl.PlayExclusive("Models/Mutant/Mutant_Jump1.ani", 0, false, 0.2f);
 
-						
+
                         animCtrl.SetTime("Models/Mutant/Mutant_Jump1.ani", 0);
                     }
                 }
@@ -182,7 +173,7 @@ namespace KinematicCharacterDemo
                 if ((softGrounded) && !moveDir.Equals(Vector3.Zero))
                 {
                     animCtrl.PlayExclusive("Models/Mutant/Mutant_Run.ani", 0, true, 0.2f);
-					animCtrl.SetSpeed("Models/Mutant/Mutant_Run.ani",2.0f);
+                    animCtrl.SetSpeed("Models/Mutant/Mutant_Run.ani", 2.0f);
                 }
                 else
                 {
@@ -192,14 +183,5 @@ namespace KinematicCharacterDemo
 
         }
 
-		void FixedPostUpdate(float timeStep)
-		{
-
-		}
-
-        void HandleNodeCollision(NodeCollisionEventArgs args)
-        {
-       
-        }
     }
 }

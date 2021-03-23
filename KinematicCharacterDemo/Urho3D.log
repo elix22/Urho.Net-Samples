@@ -1,11 +1,11 @@
-[Mon Mar 22 00:01:22 2021] INFO: Opened log file Urho3D.log
-[Mon Mar 22 00:01:22 2021] INFO: Created 7 worker threads
-[Mon Mar 22 00:01:22 2021] INFO: Added resource path /Users/elialoni/Development/Urho.Net-Samples/KinematicCharacterDemo/bin/Debug/netcoreapp3.1/CoreData/
-[Mon Mar 22 00:01:22 2021] INFO: Added resource path /Users/elialoni/Development/Urho.Net-Samples/KinematicCharacterDemo/bin/Debug/netcoreapp3.1/Data/
-[Mon Mar 22 00:01:24 2021] INFO: Adapter used ATI Technologies Inc. AMD Radeon Pro 5500M OpenGL Engine
-[Mon Mar 22 00:01:24 2021] INFO: Set screen mode 2048x1536 rate 60 Hz windowed monitor 0 highDPI
-[Mon Mar 22 00:01:24 2021] INFO: Initialized input
-[Mon Mar 22 00:01:24 2021] INFO: Initialized user interface
-[Mon Mar 22 00:01:24 2021] INFO: Initialized renderer
-[Mon Mar 22 00:01:24 2021] INFO: Set audio mode 44100 Hz stereo interpolated
-[Mon Mar 22 00:01:24 2021] INFO: Initialized engine
+[Tue Mar 23 11:50:27 2021] INFO: Opened log file Urho3D.log
+[Tue Mar 23 11:50:27 2021] INFO: Created 7 worker threads
+[Tue Mar 23 11:50:27 2021] INFO: Added resource path /Users/elialoni/Development/Urho.Net-Samples/KinematicCharacterDemo/bin/Debug/netcoreapp3.1/CoreData/
+[Tue Mar 23 11:50:27 2021] INFO: Added resource path /Users/elialoni/Development/Urho.Net-Samples/KinematicCharacterDemo/bin/Debug/netcoreapp3.1/Data/
+[Tue Mar 23 11:50:29 2021] INFO: Adapter used ATI Technologies Inc. AMD Radeon Pro 5500M OpenGL Engine
+[Tue Mar 23 11:50:29 2021] INFO: Set screen mode 2048x1536 rate 60 Hz windowed monitor 0 highDPI
+[Tue Mar 23 11:50:29 2021] INFO: Initialized input
+[Tue Mar 23 11:50:29 2021] INFO: Initialized user interface
+[Tue Mar 23 11:50:29 2021] INFO: Initialized renderer
+[Tue Mar 23 11:50:29 2021] INFO: Set audio mode 44100 Hz stereo interpolated
+[Tue Mar 23 11:50:29 2021] INFO: Initialized engine
