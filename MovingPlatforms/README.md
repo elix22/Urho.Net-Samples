@@ -15,7 +15,7 @@ https://github.com/1vanK/Urho3DKinematicCharacterController
 * to add a moving collision volume, create a new **bool** variable called **IsMovingPlatform** in the Node section and check the check box, as shown in the pic below. And the RigidBody requires trigger and kinematic settings checked in the attributes.
 * character also requires a RigidBody set as kinematic and trigger, see https://github.com/elix22/Urho.Net-Samples/blob/main/MovingPlatforms/Source/MovingPlatforms.cs#L130
 
-![alt tag](https://github.com/elix22/Urho.Net-Samples/tree/main/MovingPlatforms/screenshot/EditorMovingPlatform.png)
+![alt tag](https://github.com/elix22/Urho.Net-Samples/blob/main/MovingPlatforms/screenshot/EditorMovingPlatform.png)
 How to create a moving volume in the editor.
 
 
