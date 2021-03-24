@@ -1,4 +1,4 @@
-//
+// Copyright (c) 2020-2021 Eli Aloni (a.k.a  elix22)
 // Copyright (c) 2008-2021 the Urho3D project.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
