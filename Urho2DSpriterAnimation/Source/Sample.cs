@@ -83,7 +83,7 @@ namespace Urho2DSpriterAnimation
 
 		protected override void Start ()
 		{
-			Log.LogMessage += e => Debug.WriteLine($"[{e.Level}] {e.Message}");
+			
 			base.Start();
 			if (Platform == Platforms.Android || 
 				Platform == Platforms.iOS || 
