@@ -1,8 +1,10 @@
 # Urho.Net-Samples
+# Demo Sample were moved to https://github.com/Urho-Net/Samples
+# This repositry is no longer maintained
 
 Samples for the Urho.Net cross platform C# game development framework 
 
-https://github.com/elix22/Urho.Net
+https://github.com/Urho-Net/Urho.Net
 
 Make sure you are using the latest Urho.Net framework package.\
 If you update the Urho.Net framework , please make a clean build on your project ,\
